@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Relationship Readiness Lab • Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --deep-purple: #4c1d95;
+      --soft-purple: #8b5cf6;
+      --growth-green: #22c55e;
+      --deep-green: #14532d;
+      --bg-dark: #020617;
+      --card-bg: #020617;
+      --text-main: #f9fafb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(139,92,246,0.2), transparent 50%),
+                  radial-gradient(circle at bottom, rgba(34,197,94,0.2), transparent 50%),
+                  #020617;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(15,23,42,0.95);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(148,163,184,0.3);
+      box-shadow: 0 24px 80px rgba(15,23,42,0.8);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      color: #bbf7d0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0.75rem 0 0.5rem;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--growth-green), var(--soft-purple));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: #e5e7eb;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    select, textarea {
+      width: 100%;
+      background: rgba(15,23,42,0.9);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--text-main);
+      padding: 0.6rem 0.75rem;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    textarea::placeholder {
+      color: rgba(148,163,184,0.8);
+    }
+
+    select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--soft-purple);
+      box-shadow: 0 0 0 1px rgba(139,92,246,0.5);
+    }
+
+    button {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--growth-green), var(--soft-purple));
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: 0 15px 35px rgba(34,197,94,0.35);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(34,197,94,0.45);
+    }
+
+    .right-panel {
+      background: radial-gradient(circle at top, rgba(139,92,246,0.15), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(34,197,94,0.18), transparent 60%),
+                  rgba(15,23,42,0.95);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .right-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #c4b5fd;
+    }
+
+    .right-highlight {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .right-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .result-box {
+      margin-top: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      background: rgba(15,23,42,0.8);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      max-height: 360px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT SIDE: FORM -->
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Relationship Readiness • Self-Discovery
+      </div>
+      <h1>
+        Your <span>Relationship Readiness Lab</span>
+      </h1>
+      <p class="subtitle">
+        Explore your emotional intelligence, communication style, and attachment patterns with
+        an AI-powered assessment designed to support your growth, not shame you. Answer a few
+        questions honestly and get a personalized readiness snapshot plus a 7-day action plan.
+      </p>
+
+      <div class="pill-list">
+        <div class="pill">Emotional Intelligence</div>
+        <div class="pill">Communication Skills</div>
+        <div class="pill">Attachment Style</div>
+        <div class="pill">Self-Awareness</div>
+        <div class="pill">Growth Mindset</div>
+      </div>
+
+      <form method="POST">
+        <div>
+          <label for="category">Assessment Focus</label>
+          <select id="category" name="category">
+            <option value="emotional_intelligence" {% if category == "emotional_intelligence" %}selected{% endif %}>
+              Emotional Intelligence
+            </option>
+            <option value="communication" {% if category == "communication" %}selected{% endif %}>
+              Communication Skills
+            </option>
+            <option value="attachment_style" {% if category == "attachment_style" %}selected{% endif %}>
+              Attachment Style
+            </option>
+          </select>
+          <p class="hint">Choose where you want to start your self-discovery today.</p>
+        </div>
+
+        <div>
+          <label for="situation">Current Situation</label>
+          <textarea id="situation" name="situation" placeholder="Are you single, dating, situationship, recently divorced, healing, etc.? Include anything important about your current season."></textarea>
+        </div>
+
+        <div>
+          <label for="goals">Relationship Goals</label>
+          <textarea id="goals" name="goals" placeholder="What are your top 2–3 goals for dating and relationships over the next 6–12 months?"></textarea>
+        </div>
+
+        <div>
+          <label for="conflict">Conflict & Emotions</label>
+          <textarea id="conflict" name="conflict" placeholder="How do you normally respond when you feel hurt, rejected, or misunderstood in relationships?"></textarea>
+        </div>
+
+        <div>
+          <label for="fears">Fears & Anxieties</label>
+          <textarea id="fears" name="fears" placeholder="What secretly worries you most about dating or being in a relationship?"></textarea>
+        </div>
+
+        <button type="submit">
+          Run My Readiness Assessment ✨
+        </button>
+      </form>
+    </div>
+
+    <!-- RIGHT SIDE: RESULTS -->
+    <div class="right-panel">
+      <div class="right-title">INSIGHTS & NEXT STEPS</div>
+      <div class="right-highlight">
+        Personalized breakdown of where you are now and how to grow.
+      </div>
+      <p class="right-note">
+        You’ll see a readiness score, your key strengths, your most important growth areas,
+        and a simple 7-day action plan. Save it as a screenshot or copy it into your journal
+        to track your progress.
+      </p>
+
+      {% if analysis %}
+      <div class="result-box">
+        {{ analysis }}
+      </div>
+      {% else %}
+      <div class="result-box">
+        Your insights will appear here after you run your first assessment. Start by choosing
+        a category and answering the questions honestly. This space is for your growth, not perfection.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
