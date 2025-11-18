@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Relationship Readiness Lab • Access Pass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --deep-purple: #4c1d95;
@@ -14,144 +15,175 @@
       --text-main: #f9fafb;
       --muted: #9ca3af;
     }
-    * { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at top, rgba(139,92,246,0.2), transparent 50%),
-                  radial-gradient(circle at bottom, rgba(34,197,94,0.2), transparent 50%),
-                  #020617;
+      background:
+        radial-gradient(circle at top, rgba(139,92,246,0.24), transparent 55%),
+        radial-gradient(circle at bottom, rgba(34,197,94,0.24), transparent 60%),
+        #020617;
       color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.25rem;
     }
-
     .container {
-      max-width: 720px;
+      max-width: 760px;
       width: 100%;
-      background: rgba(15,23,42,0.96);
-      border-radius: 1.5rem;
-      padding: 2rem;
-      border: 1px solid rgba(148,163,184,0.3);
-      box-shadow: 0 24px 80px rgba(15,23,42,0.8);
+      background: rgba(15,23,42,0.97);
+      border-radius: 1.75rem;
+      padding: 2.25rem 2rem 2rem;
+      border: 1px solid rgba(148,163,184,0.45);
+      box-shadow: 0 28px 90px rgba(15,23,42,0.9);
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 999px;
-      background: rgba(34,197,94,0.12);
+      background: rgba(34,197,94,0.14);
       color: #bbf7d0;
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.85rem;
     }
-
     .badge-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: #22c55e;
     }
-
     h1 {
-      font-size: 1.9rem;
-      margin: 0.25rem 0 0.5rem;
+      font-size: 2rem;
+      margin: 0.25rem 0 0.4rem;
     }
-
     h1 span {
       background: linear-gradient(135deg, var(--growth-green), var(--soft-purple));
       -webkit-background-clip: text;
       color: transparent;
     }
-
     .subtitle {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      font-size: 0.97rem;
+      line-height: 1.7;
+      margin-bottom: 1.7rem;
+      max-width: 42rem;
     }
-
+    .highlight {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
     .email-card {
-      background: rgba(15,23,42,0.9);
-      border-radius: 1rem;
-      border: 1px solid rgba(148,163,184,0.4);
-      padding: 1.25rem 1.5rem;
+      background: rgba(15,23,42,0.96);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 1.4rem 1.6rem 1.3rem;
+      box-shadow: 0 18px 50px rgba(15,23,42,0.75);
     }
-
+    .email-title {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a5b4fc;
+      margin-bottom: 0.4rem;
+    }
+    .email-subtext {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
     label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       color: var(--muted);
       margin-bottom: 0.25rem;
     }
-
     input {
       width: 100%;
       background: rgba(15,23,42,0.9);
-      border-radius: 0.75rem;
-      border: 1px solid rgba(148,163,184,0.5);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148,163,184,0.6);
       color: var(--text-main);
-      padding: 0.6rem 0.75rem;
+      padding: 0.65rem 0.8rem;
       font-size: 0.9rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
-
     input::placeholder {
-      color: rgba(148,163,184,0.8);
+      color: rgba(148,163,184,0.85);
     }
-
     input:focus {
       outline: none;
       border-color: var(--soft-purple);
-      box-shadow: 0 0 0 1px rgba(139,92,246,0.5);
+      box-shadow: 0 0 0 1px rgba(139,92,246,0.6);
+      background: rgba(15,23,42,0.98);
     }
-
     button {
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
       width: 100%;
-      padding: 0.8rem 1rem;
+      padding: 0.95rem 1rem;
       border-radius: 999px;
       border: none;
       background: linear-gradient(135deg, var(--growth-green), var(--soft-purple));
-      color: #0b1120;
+      background-size: 200% 200%;
+      color: #020617;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      box-shadow: 0 15px 35px rgba(34,197,94,0.35);
+      box-shadow: 0 18px 45px rgba(34,197,94,0.4);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background-position 0.7s ease;
+      animation: shimmer 6s ease infinite;
     }
-
     button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 20px 45px rgba(34,197,94,0.45);
+      box-shadow: 0 22px 55px rgba(34,197,94,0.55);
+      background-position: 100% 0%;
     }
-
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .hint {
       font-size: 0.8rem;
       color: #9ca3af;
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
+      line-height: 1.5;
     }
-
+    .hint span {
+      color: #c4b5fd;
+      font-weight: 500;
+    }
     .error {
       font-size: 0.85rem;
       color: #fecaca;
       background: rgba(127,29,29,0.35);
-      border-radius: 0.75rem;
+      border-radius: 0.9rem;
       padding: 0.6rem 0.75rem;
-      margin-bottom: 0.75rem;
-      border: 1px solid rgba(248,113,113,0.6);
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(248,113,113,0.7);
+    }
+    .tiny {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+    .tiny strong {
+      color: #e5e7eb;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -159,18 +191,29 @@
   <div class="container">
     <div class="badge">
       <span class="badge-dot"></span>
-      Level One • Free Entry
+      Level One • Free Relationship Readiness Entry
     </div>
+
     <h1>
-      Unlock the <span>Relationship Readiness Lab</span>
+      Unlock Your <span>Relationship Readiness Lab</span>
     </h1>
+
     <p class="subtitle">
-      This is your private space to explore how ready you are for healthy love — emotionally,
-      mentally, and spiritually. In exchange for this free tool, your email helps me send you
-      new resources, check-ins, and next-level support as you grow.
+      Sis, before you give your heart to anybody, let’s make sure <span class="highlight">you</span> feel grounded,
+      healed, and confident in who you are. This free AI-powered assessment blends psychology,
+      spiritual wisdom, and self-reflection to help you understand your emotional patterns,
+      communication style, and readiness for healthy love.
     </p>
 
     <div class="email-card">
+      <div class="email-title">
+        Your Access Pass • It’s Free
+      </div>
+      <p class="email-subtext">
+        In exchange for this tool, I ask for your email so I can send you follow-up resources,
+        check-ins, and next-level support on your relationship journey.
+      </p>
+
       {% if error %}
       <div class="error">
         {{ error }}
@@ -180,7 +223,7 @@
       <form method="POST">
         <div>
           <label for="name">First Name (optional)</label>
-          <input id="name" name="name" type="text" placeholder="How should I greet you?" />
+          <input id="name" name="name" type="text" placeholder="How should I greet you, beautiful?" />
         </div>
 
         <div>
@@ -189,11 +232,16 @@
         </div>
 
         <button type="submit">
-          Get My Free Assessment Access ✨
+          Get My Free Readiness Access ✨
         </button>
 
         <p class="hint">
-          No spam, ever. Just tools, truth, and encouragement for your relationship journey.
+          <span>No spam, ever.</span> Just tools, truth, and encouragement for women who want
+          emotionally healthy, spiritually aligned love.
+        </p>
+        <p class="tiny">
+          By entering your email, you agree to receive relationship and self-development content from me.
+          You can unsubscribe anytime — but I hope you’ll stay for the glow up. 💌
         </p>
       </form>
     </div>
